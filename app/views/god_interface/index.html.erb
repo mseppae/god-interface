@@ -1,0 +1,18 @@
+<h2>God monitoring status</h2>
+<% if flash[:error] or flash[:notice] %>
+	<div id="notice">
+    <%= flash[:error] || flash[:notice] %>
+  </div>
+<% end %>
+<p>
+	<% @processes.each do |process| %>
+		<% if process[1].is_a?(Hash) %>
+			<%= process[0] %>:&nbsp;&nbsp;&nbsp;<br />
+				<% process[1].each do |watches| %>
+					&nbsp;&nbsp;&nbsp;<%= watches[0] %>: <%= watches[1] %>&nbsp;&nbsp;&nbsp;<%= watch_action_links(watches, process[0]) %><br />
+				<% end %>
+		<% else %>
+			<%= process[0] %>: <%= process[1] %>&nbsp;&nbsp;&nbsp;<%= watch_action_links(process) %><br />
+		<% end %>
+	<% end %>
+</p>
