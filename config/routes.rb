@@ -10,11 +10,21 @@ ActionController::Routing::Routes.draw do |map|
   # This route can be invoked with purchase_url(:id => product.id)
 
   map.resources :watches
-  map.start_watch 'watches/:id/start', :controller => 'watches', :action => 'start'
+  map.start_watch       'watches/:id/start',     :controller => 'watches', :action => 'start'
+  map.unmonitor_watch   'watches/:id/unmonitor', :controller => 'watches', :action => 'unmonitor'
+  map.monitor_watch     'watches/:id/monitor',   :controller => 'watches', :action => 'monitor'
+  map.restart_watch     'watches/:id/restart',   :controller => 'watches', :action => 'restart'
+  
+  map.unmonitor_group   'groups/:id/unmonitor', :controller => 'groups', :action => 'unmonitor'
+  map.monitor_group     'groups/:id/monitor',   :controller => 'groups', :action => 'monitor'
+  map.restart_group     'groups/:id/restart',   :controller => 'groups', :action => 'restart'
   
   map.resources :groups do |g|
     g.resources :watches
-    map.start_group_watch 'groups/:group_id/watches/:id/start', :controller => 'watches', :action => 'start'
+    g.start_watch     'watches/:id/start',     :controller => 'watches', :action => 'start'
+    g.unmonitor_watch 'watches/:id/unmonitor', :controller => 'watches', :action => 'unmonitor'
+    g.monitor_watch   'watches/:id/monitor',   :controller => 'watches', :action => 'monitor'
+    g.restart_watch   'watches/:id/restart',   :controller => 'watches', :action => 'restart'
   end
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):

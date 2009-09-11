@@ -7,7 +7,7 @@
 <p>
 	<% @processes.each do |process| %>
 		<% if process[1].is_a?(Hash) %>
-			<%= process[0] %>:&nbsp;&nbsp;&nbsp;<br />
+			<%= process[0] %>:&nbsp;&nbsp;&nbsp;<%= group_action_links(process) %><br />
 				<% process[1].each do |watches| %>
 					&nbsp;&nbsp;&nbsp;<%= watches[0] %>: <%= watches[1] %>&nbsp;&nbsp;&nbsp;<%= watch_action_links(watches, process[0]) %><br />
 				<% end %>
