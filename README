@@ -3,6 +3,11 @@ An interface to God - http://github.com/mojombo/god/tree/master
 Setup
 ========================
 
-- Startup God with "god -c god/test.god"
-- Start the mongrel "mongrel_rails start" or "script/server"
-- Goto localhost:3000
+Install god if you do not have it yet
+$ sudo gem install god
+
+Start god and fire up the server
+$ god -c god/test.god
+$ script/server
+
+Goto localhost:3000
