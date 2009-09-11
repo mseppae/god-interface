@@ -31,7 +31,7 @@ class GodInterface
     end
     
     def get_watch_name(line)
-      line.match('[a-zA-Z0-9_]*:')[0].gsub!(':', '').to_sym
+      line.match('[a-zA-Z0-9_\-.]*:')[0].gsub!(':', '').to_sym
     end
     
     def add_group(group)
